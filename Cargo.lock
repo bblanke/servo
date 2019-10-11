@@ -977,7 +977,7 @@ name = "deny_public_fields"
 version = "0.0.1"
 dependencies = [
  "syn 1.0.3",
- "synstructure 0.12.1",
+ "synstructure",
 ]
 
 [[package]]
@@ -1006,7 +1006,7 @@ dependencies = [
  "proc-macro2 1.0.1",
  "quote 1.0.2",
  "syn 1.0.3",
- "synstructure 0.12.1",
+ "synstructure",
 ]
 
 [[package]]
@@ -2194,9 +2194,9 @@ dependencies = [
 
 [[package]]
 name = "hyper_serde"
-version = "0.11.0"
+version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f9ce9b7b7efb67dec22beaf71defbec5688240399889fc3050186db41b4a40cd"
+checksum = "3bf0fc731a638339172253834b4ba8d60a9ecbeb4c031fcfcacd25b3cdf6e6c1"
 dependencies = [
  "cookie",
  "headers",
@@ -2396,7 +2396,7 @@ version = "0.0.1"
 dependencies = [
  "proc-macro2 1.0.1",
  "syn 1.0.3",
- "synstructure 0.12.1",
+ "synstructure",
 ]
 
 [[package]]
@@ -2865,7 +2865,7 @@ checksum = "e37c5d4cd9473c5f4c9c111f033f15d4df9bd378fdf615944e360a4f55a05f0b"
 dependencies = [
  "proc-macro2 1.0.1",
  "syn 1.0.3",
- "synstructure 0.12.1",
+ "synstructure",
 ]
 
 [[package]]
@@ -3535,7 +3535,7 @@ dependencies = [
 [[package]]
 name = "peek-poke"
 version = "0.2.0"
-source = "git+https://github.com/servo/webrender#4646982f69d90f0b39b6345be4e4dbd96ce5ac05"
+source = "git+https://github.com/servo/webrender#5c3e5baf669b79a8ceff017554e7812933ca0d38"
 dependencies = [
  "euclid",
  "peek-poke-derive",
@@ -3544,12 +3544,12 @@ dependencies = [
 [[package]]
 name = "peek-poke-derive"
 version = "0.2.0"
-source = "git+https://github.com/servo/webrender#4646982f69d90f0b39b6345be4e4dbd96ce5ac05"
+source = "git+https://github.com/servo/webrender#5c3e5baf669b79a8ceff017554e7812933ca0d38"
 dependencies = [
- "proc-macro2 0.4.26",
- "quote 0.6.12",
- "syn 0.15.39",
- "synstructure 0.10.1",
+ "proc-macro2 1.0.1",
+ "quote 1.0.2",
+ "syn 1.0.3",
+ "synstructure",
  "unicode-xid 0.1.0",
 ]
 
@@ -3631,9 +3631,9 @@ checksum = "676e8eb2b1b4c9043511a9b7bea0915320d7e502b0a079fb03f9635a5252b18c"
 
 [[package]]
 name = "plane-split"
-version = "0.14.1"
+version = "0.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "68a117c887fbcd9af8dfc1b8b12ee19ba9dec0b2a91d0a9d2bd9114e459f9c78"
+checksum = "ffe16a646a08f4b4dd74035b9ff8e378eb1a4012a74f14f5889e7001cdbece33"
 dependencies = [
  "binary-space-partition",
  "euclid",
@@ -4175,6 +4175,7 @@ dependencies = [
  "script_traits",
  "selectors",
  "serde",
+ "serde_bytes",
  "serde_json",
  "servo-media",
  "servo_allocator",
@@ -4336,9 +4337,9 @@ dependencies = [
 
 [[package]]
 name = "serde_bytes"
-version = "0.10.4"
+version = "0.11.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "adb6e51a6b3696b301bc221d785f898b4457c619b51d7ce195a6d20baecb37b3"
+checksum = "45af0182ff64abaeea290235eb67da3825a576c5d53e642c4d5b652e12e6effc"
 dependencies = [
  "serde",
 ]
@@ -5036,7 +5037,7 @@ dependencies = [
  "proc-macro2 1.0.1",
  "quote 1.0.2",
  "syn 1.0.3",
- "synstructure 0.12.1",
+ "synstructure",
 ]
 
 [[package]]
@@ -5119,18 +5120,6 @@ dependencies = [
  "proc-macro2 1.0.1",
  "quote 1.0.2",
  "unicode-xid 0.2.0",
-]
-
-[[package]]
-name = "synstructure"
-version = "0.10.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "73687139bf99285483c96ac0add482c3776528beac1d97d444f6e91f203a2015"
-dependencies = [
- "proc-macro2 0.4.26",
- "quote 0.6.12",
- "syn 0.15.39",
- "unicode-xid 0.1.0",
 ]
 
 [[package]]
@@ -5288,7 +5277,7 @@ dependencies = [
  "proc-macro2 1.0.1",
  "quote 1.0.2",
  "syn 1.0.3",
- "synstructure 0.12.1",
+ "synstructure",
 ]
 
 [[package]]
@@ -5847,7 +5836,7 @@ dependencies = [
 [[package]]
 name = "webrender"
 version = "0.60.0"
-source = "git+https://github.com/servo/webrender#4646982f69d90f0b39b6345be4e4dbd96ce5ac05"
+source = "git+https://github.com/servo/webrender#5c3e5baf669b79a8ceff017554e7812933ca0d38"
 dependencies = [
  "base64",
  "bincode",
@@ -5888,7 +5877,7 @@ dependencies = [
 [[package]]
 name = "webrender_api"
 version = "0.60.0"
-source = "git+https://github.com/servo/webrender#4646982f69d90f0b39b6345be4e4dbd96ce5ac05"
+source = "git+https://github.com/servo/webrender#5c3e5baf669b79a8ceff017554e7812933ca0d38"
 dependencies = [
  "app_units",
  "bitflags",
@@ -5910,7 +5899,7 @@ dependencies = [
 [[package]]
 name = "webrender_build"
 version = "0.0.1"
-source = "git+https://github.com/servo/webrender#4646982f69d90f0b39b6345be4e4dbd96ce5ac05"
+source = "git+https://github.com/servo/webrender#5c3e5baf669b79a8ceff017554e7812933ca0d38"
 dependencies = [
  "sha2",
 ]
@@ -6074,7 +6063,7 @@ dependencies = [
 [[package]]
 name = "wr_malloc_size_of"
 version = "0.0.1"
-source = "git+https://github.com/servo/webrender#4646982f69d90f0b39b6345be4e4dbd96ce5ac05"
+source = "git+https://github.com/servo/webrender#5c3e5baf669b79a8ceff017554e7812933ca0d38"
 dependencies = [
  "app_units",
  "euclid",
