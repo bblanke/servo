@@ -30,7 +30,7 @@ use euclid::default::Size2D;
 #[dom_struct]
 pub struct OffscreenCanvasRenderingContext2D {
     reflector_: Reflector,
-    canvas: Option<Dom<OffscreenCanvas>>,
+    canvas: Dom<OffscreenCanvas>,
     canvas_state: DomRefCell<CanvasState>,
     htmlcanvas: Option<Dom<HTMLCanvasElement>>,
 }
@@ -38,13 +38,13 @@ pub struct OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     fn new_inherited(
         global: &GlobalScope,
-        canvas: Option<&OffscreenCanvas>,
+        canvas: &OffscreenCanvas,
         size: Size2D<u64>,
         htmlcanvas: Option<&HTMLCanvasElement>,
     ) -> OffscreenCanvasRenderingContext2D {
         OffscreenCanvasRenderingContext2D {
             reflector_: Reflector::new(),
-            canvas: canvas.map(Dom::from_ref),
+            canvas: Some(canvas.map(Dom::from_ref)),
             htmlcanvas: htmlcanvas.map(Dom::from_ref),
             canvas_state: DomRefCell::new(CanvasState::new(
                 global,
@@ -61,7 +61,7 @@ impl OffscreenCanvasRenderingContext2D {
     ) -> DomRoot<OffscreenCanvasRenderingContext2D> {
         let boxed = Box::new(OffscreenCanvasRenderingContext2D::new_inherited(
             global,
-            Some(canvas),
+            canvas,
             size,
             htmlcanvas,
         ));
