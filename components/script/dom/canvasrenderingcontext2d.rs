@@ -298,7 +298,7 @@ impl CanvasState {
         }
     }
 
-    pub fn get_rect(&self, canvas_size: Size2D<u32>, rect: Rect<u32>) -> Vec<u8> {
+    pub fn get_rect(&self, canvas_size: Size2D<u64>, rect: Rect<u64>) -> Vec<u8> {
         assert!(self.origin_is_clean());
 
         assert!(Rect::from_size(canvas_size).contains_rect(&rect));
@@ -1017,7 +1017,7 @@ impl CanvasState {
     // https://html.spec.whatwg.org/multipage/#dom-context-2d-getimagedata
     pub fn GetImageData(
         &self,
-        canvas_size: Size2D<u32>,
+        canvas_size: Size2D<u64>,
         global: &GlobalScope,
         sx: i32,
         sy: i32,
@@ -1053,7 +1053,7 @@ impl CanvasState {
     }
 
     // https://html.spec.whatwg.org/multipage/#dom-context-2d-putimagedata
-    pub fn PutImageData(&self, canvas_size: Size2D<u32>, imagedata: &ImageData, dx: i32, dy: i32) {
+    pub fn PutImageData(&self, canvas_size: Size2D<u64>, imagedata: &ImageData, dx: i32, dy: i32) {
         self.PutImageData_(
             canvas_size,
             imagedata,
@@ -1070,7 +1070,7 @@ impl CanvasState {
     #[allow(unsafe_code)]
     pub fn PutImageData_(
         &self,
-        canvas_size: Size2D<u32>,
+        canvas_size: Size2D<u64>,
         imagedata: &ImageData,
         dx: i32,
         dy: i32,
