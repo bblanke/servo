@@ -25,7 +25,6 @@ use crate::dom::imagedata::ImageData;
 use crate::dom::offscreencanvas::OffscreenCanvas;
 use crate::dom::textmetrics::TextMetrics;
 use dom_struct::dom_struct;
-use euclid::default::Size2D;
 
 #[dom_struct]
 pub struct OffscreenCanvasRenderingContext2D {
@@ -39,7 +38,6 @@ impl OffscreenCanvasRenderingContext2D {
     fn new_inherited(
         global: &GlobalScope,
         canvas: &OffscreenCanvas,
-        size: Size2D<u64>,
         htmlcanvas: Option<&HTMLCanvasElement>,
     ) -> OffscreenCanvasRenderingContext2D {
         OffscreenCanvasRenderingContext2D {
@@ -48,7 +46,7 @@ impl OffscreenCanvasRenderingContext2D {
             htmlcanvas: htmlcanvas.map(Dom::from_ref),
             canvas_state: DomRefCell::new(CanvasState::new(
                 global,
-                Size2D::new(size.width as u64, size.height as u64),
+                canvas.get_size(),
             )),
         }
     }
@@ -56,13 +54,11 @@ impl OffscreenCanvasRenderingContext2D {
     pub fn new(
         global: &GlobalScope,
         canvas: &OffscreenCanvas,
-        size: Size2D<u64>,
         htmlcanvas: Option<&HTMLCanvasElement>,
     ) -> DomRoot<OffscreenCanvasRenderingContext2D> {
         let boxed = Box::new(OffscreenCanvasRenderingContext2D::new_inherited(
             global,
             canvas,
-            size,
             htmlcanvas,
         ));
         reflect_dom_object(
