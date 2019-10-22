@@ -28,6 +28,7 @@ use crate::dom::node::{Node, NodeDamage};
 use crate::dom::paintworkletglobalscope::PaintWorkletGlobalScope;
 use crate::dom::textmetrics::TextMetrics;
 use crate::unpremultiplytable::UNPREMULTIPLY_TABLE;
+use canvas::canvas_data::Size2DExt;
 use canvas_traits::canvas::{Canvas2dMsg, CanvasId, CanvasMsg};
 use canvas_traits::canvas::{CompositionOrBlending, FillOrStrokeStyle, FillRule};
 use canvas_traits::canvas::{LineCapStyle, LineJoinStyle, LinearGradientStyle};
@@ -2135,14 +2136,4 @@ fn adjust_size_sign(
         origin.y = origin.y.saturating_sub(size.height);
     }
     (origin, size.to_u32())
-}
-
-pub trait Size2DExt {
-    fn to_u64(&self) -> Size2D<u64>;
-}
-
-impl Size2DExt for Size2D<u32> {
-    fn to_u64(&self) -> Size2D<u64> {
-        return Size2D::new(self.width as u64, self.height as u64);
-    }
 }

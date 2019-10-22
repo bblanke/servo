@@ -13,7 +13,7 @@ use std::marker::PhantomData;
 use std::mem;
 use std::sync::Arc;
 use webrender::api::DirtyRect;
-use webrender_api::units::RectExt;
+use webrender_api::units::RectExt as RectExt_;
 
 /// The canvas data stores a state machine for the current status of
 /// the path data and any relevant transformations that are
@@ -1196,19 +1196,28 @@ pub trait Size2DExt {
 
 impl Size2DExt for Size2D<f64> {
     fn to_u64(&self) -> Size2D<u64> {
-        return Size2D::new(self.width as u64, self.height as u64);
+        self.cast()
     }
 }
 
-pub trait RectExt_ {
+impl Size2DExt for Size2D<u32> {
+    fn to_u64(&self) -> Size2D<u64> {
+        self.cast()
+    }
+}
+
+pub trait RectExt {
     fn to_u64(&self) -> Rect<u64>;
 }
 
-impl RectExt_ for Rect<f64> {
+impl RectExt for Rect<f64> {
     fn to_u64(&self) -> Rect<u64> {
-        return Rect::new(
-            Point2D::new(self.origin.x as u64, self.origin.y as u64),
-            Size2D::new(self.size.width as u64, self.size.height as u64),
-        );
+        self.cast()
+    }
+}
+
+impl RectExt for Rect<u64> {
+    fn to_u64(&self) -> Rect<u64> {
+        self.cast()
     }
 }

@@ -4138,6 +4138,7 @@ dependencies = [
  "bincode",
  "bitflags",
  "bluetooth_traits",
+ "canvas",
  "canvas_traits",
  "caseless",
  "chrono",
