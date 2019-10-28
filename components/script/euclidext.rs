@@ -8,6 +8,12 @@ pub trait Size2DExt {
     fn to_u64(&self) -> Size2D<u64>;
 }
 
+impl Size2DExt for Size2D<f32> {
+    fn to_u64(&self) -> Size2D<u64> {
+        self.cast()
+    }
+}
+
 impl Size2DExt for Size2D<f64> {
     fn to_u64(&self) -> Size2D<u64> {
         self.cast()

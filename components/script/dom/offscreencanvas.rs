@@ -138,7 +138,7 @@ impl OffscreenCanvasMethods for OffscreenCanvas {
         if let Some(canvas_context) = self.context() {
             match &*canvas_context {
                 OffscreenCanvasContext::OffscreenContext2d(rendering_context) => {
-                    rendering_context.set_bitmap_dimensions(self.get_size());
+                    rendering_context.get_canvas_state().set_bitmap_dimensions(self.get_size());
                 },
             }
         }
@@ -156,7 +156,7 @@ impl OffscreenCanvasMethods for OffscreenCanvas {
         if let Some(canvas_context) = self.context() {
             match &*canvas_context {
                 OffscreenCanvasContext::OffscreenContext2d(rendering_context) => {
-                    rendering_context.set_bitmap_dimensions(self.get_size());
+                    rendering_context.get_canvas_state().set_bitmap_dimensions(self.get_size());
                 },
             }
         }

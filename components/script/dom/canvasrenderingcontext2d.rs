@@ -56,6 +56,7 @@ use std::str::FromStr;
 use std::sync::Arc;
 use std::{fmt, mem};
 use crate::euclidext::Size2DExt;
+use core::cell::Ref;
 
 #[must_root]
 #[derive(Clone, JSTraceable, MallocSizeOf)]
@@ -183,6 +184,18 @@ impl CanvasState {
             .unwrap()
     }
 
+    // https://html.spec.whatwg.org/multipage/#concept-canvas-set-bitmap-dimensions
+    pub fn set_bitmap_dimensions(&self, size: Size2D<u64>) {
+        self.reset_to_initial_state();
+        self.ipc_renderer
+            .send(CanvasMsg::Recreate(
+                size,
+                self.get_canvas_id(),
+            ))
+            .unwrap();
+    }
+
+    // TODO: Remove this
     pub fn reset_to_initial_state(&self) {
         self.saved_states.borrow_mut().clear();
         *self.state.borrow_mut() = CanvasContextState::new();
@@ -1498,8 +1511,13 @@ impl CanvasRenderingContext2D {
         reflect_dom_object(boxed, global, CanvasRenderingContext2DBinding::Wrap)
     }
 
+    pub fn get_canvas_state(&self) -> Ref<CanvasState> {
+        self.canvas_state.borrow()
+    }
+
+    // TODO: Remove these
     // https://html.spec.whatwg.org/multipage/#concept-canvas-set-bitmap-dimensions
-    pub fn set_bitmap_dimensions(&self, size: Size2D<u32>) {
+    /*pub fn set_bitmap_dimensions(&self, size: Size2D<u32>) {
         self.reset_to_initial_state();
         self.canvas_state
             .borrow()
@@ -1509,13 +1527,13 @@ impl CanvasRenderingContext2D {
                 self.canvas_state.borrow().get_canvas_id(),
             ))
             .unwrap();
-    }
+    }*/
 
     // https://html.spec.whatwg.org/multipage/#reset-the-rendering-context-to-its-default-state
-    fn reset_to_initial_state(&self) {
+    /*fn reset_to_initial_state(&self) {
         self.canvas_state.borrow().saved_states.borrow_mut().clear();
         *self.canvas_state.borrow().state.borrow_mut() = CanvasContextState::new();
-    }
+    }*/
 
     fn mark_as_dirty(&self) {
         self.canvas_state
@@ -1538,6 +1556,7 @@ impl CanvasRenderingContext2D {
         self.canvas_state.borrow().send_canvas_2d_msg(msg)
     }
 
+    // TODO: Remove this
     pub fn get_ipc_renderer(&self) -> IpcSender<CanvasMsg> {
         self.canvas_state.borrow().ipc_renderer.clone()
     }

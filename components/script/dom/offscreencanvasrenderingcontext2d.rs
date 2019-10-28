@@ -24,9 +24,8 @@ use crate::dom::htmlcanvaselement::HTMLCanvasElement;
 use crate::dom::imagedata::ImageData;
 use crate::dom::offscreencanvas::OffscreenCanvas;
 use crate::dom::textmetrics::TextMetrics;
-use canvas_traits::canvas::CanvasMsg;
 use dom_struct::dom_struct;
-use euclid::default::Size2D;
+use core::cell::Ref;
 
 #[dom_struct]
 pub struct OffscreenCanvasRenderingContext2D {
@@ -65,8 +64,12 @@ impl OffscreenCanvasRenderingContext2D {
         )
     }
 
+    pub fn get_canvas_state(&self) -> Ref<CanvasState> {
+        self.canvas_state.borrow()
+    }
+
     // https://html.spec.whatwg.org/multipage/#concept-canvas-set-bitmap-dimensions
-    pub fn set_bitmap_dimensions(&self, size: Size2D<u64>) {
+    /*pub fn set_bitmap_dimensions(&self, size: Size2D<u64>) {
         self.canvas_state.borrow().reset_to_initial_state();
         self.canvas_state
             .borrow()
@@ -76,7 +79,7 @@ impl OffscreenCanvasRenderingContext2D {
                 self.canvas_state.borrow().get_canvas_id(),
             ))
             .unwrap();
-    }
+    }*/
 }
 
 impl OffscreenCanvasRenderingContext2DMethods for OffscreenCanvasRenderingContext2D {

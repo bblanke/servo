@@ -31,6 +31,7 @@ use servo_url::ServoUrl;
 use std::cell::Cell;
 use style_traits::CSSPixel;
 use style_traits::DevicePixel;
+use crate::euclidext::Size2DExt;
 
 #[dom_struct]
 pub struct PaintRenderingContext2D {
@@ -75,7 +76,8 @@ impl PaintRenderingContext2D {
         let size = size * device_pixel_ratio;
         self.device_pixel_ratio.set(device_pixel_ratio);
         self.context
-            .set_bitmap_dimensions(size.to_untyped().to_u32());
+            .get_canvas_state()
+            .set_bitmap_dimensions(size.to_untyped().to_u64());
         self.scale_by_device_pixel_ratio();
     }
 

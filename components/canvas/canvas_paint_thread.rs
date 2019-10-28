@@ -9,7 +9,6 @@ use ipc_channel::ipc::{self, IpcSender};
 use std::borrow::ToOwned;
 use std::collections::HashMap;
 use std::thread;
-use crate::euclidext::{RectExt, Size2DExt};
 
 pub enum AntialiasMode {
     Default,

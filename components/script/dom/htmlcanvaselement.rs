@@ -45,6 +45,7 @@ use script_layout_interface::{HTMLCanvasData, HTMLCanvasDataSource};
 use servo_config::pref;
 use std::cell::Ref;
 use style::attr::{AttrValue, LengthOrPercentageOrAuto};
+use crate::euclidext::Size2DExt;
 
 const DEFAULT_WIDTH: u32 = 300;
 const DEFAULT_HEIGHT: u32 = 150;
@@ -94,7 +95,7 @@ impl HTMLCanvasElement {
         let size = self.get_size();
         if let Some(ref context) = *self.context.borrow() {
             match *context {
-                CanvasContext::Context2d(ref context) => context.set_bitmap_dimensions(size),
+                CanvasContext::Context2d(ref context) => context.get_canvas_state().set_bitmap_dimensions(size.to_u64()),
                 CanvasContext::WebGL(ref context) => context.recreate(size),
                 CanvasContext::WebGL2(ref context) => context.recreate(size),
             }
