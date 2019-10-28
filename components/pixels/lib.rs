@@ -97,7 +97,6 @@ pub fn clip(
         origin.y = 0;
     }
     let origin = Point2D::new(origin.x as u64, origin.y as u64);
-    let size = Size2D::new(size.width as u64, size.height as u64);
     Rect::new(origin, size)
         .intersection(&Rect::from_size(surface))
         .filter(|rect| !rect.is_empty())

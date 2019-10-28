@@ -28,7 +28,6 @@ use crate::dom::node::{Node, NodeDamage};
 use crate::dom::paintworkletglobalscope::PaintWorkletGlobalScope;
 use crate::dom::textmetrics::TextMetrics;
 use crate::unpremultiplytable::UNPREMULTIPLY_TABLE;
-use canvas::canvas_data::Size2DExt;
 use canvas_traits::canvas::{Canvas2dMsg, CanvasId, CanvasMsg};
 use canvas_traits::canvas::{CompositionOrBlending, FillOrStrokeStyle, FillRule};
 use canvas_traits::canvas::{LineCapStyle, LineJoinStyle, LinearGradientStyle};
@@ -56,6 +55,7 @@ use std::cell::Cell;
 use std::str::FromStr;
 use std::sync::Arc;
 use std::{fmt, mem};
+use crate::euclidext::Size2DExt;
 
 #[must_root]
 #[derive(Clone, JSTraceable, MallocSizeOf)]

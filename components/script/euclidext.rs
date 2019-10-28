@@ -4,11 +4,17 @@
 
 use euclid::default::{Rect, Size2D};
 
-pub (crate) trait Size2DExt {
+pub trait Size2DExt {
     fn to_u64(&self) -> Size2D<u64>;
 }
 
 impl Size2DExt for Size2D<f64> {
+    fn to_u64(&self) -> Size2D<u64> {
+        self.cast()
+    }
+}
+
+impl Size2DExt for Size2D<u32> {
     fn to_u64(&self) -> Size2D<u64> {
         self.cast()
     }
@@ -19,6 +25,12 @@ pub trait RectExt {
 }
 
 impl RectExt for Rect<f64> {
+    fn to_u64(&self) -> Rect<u64> {
+        self.cast()
+    }
+}
+
+impl RectExt for Rect<u32> {
     fn to_u64(&self) -> Rect<u64> {
         self.cast()
     }

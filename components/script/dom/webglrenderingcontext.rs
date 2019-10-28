@@ -2925,10 +2925,7 @@ impl WebGLRenderingContextMethods for WebGLRenderingContext {
         // Note: we're casting a Rect<u64> back into a Rect<u32> here, but it's okay because
         //  it used u32 data types to begin with. It just got converted to Rect<u64> in
         //  pixels::clip
-        let src_rect = Rect::new(
-            Point2D::new(src_rect.origin.x as u32, src_rect.origin.y as u32),
-            Size2D::new(src_rect.size.width as u32, src_rect.size.height as u32),
-        );
+        let src_rect = src_rect.to_u32();
 
         let mut dest_offset = 0;
         if x < 0 {

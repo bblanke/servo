@@ -3,13 +3,13 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 use crate::canvas_data::*;
-use crate::canvas_data::{RectExt, Size2DExt};
 use canvas_traits::canvas::*;
 use euclid::default::Size2D;
 use ipc_channel::ipc::{self, IpcSender};
 use std::borrow::ToOwned;
 use std::collections::HashMap;
 use std::thread;
+use crate::euclidext::{RectExt, Size2DExt};
 
 pub enum AntialiasMode {
     Default,

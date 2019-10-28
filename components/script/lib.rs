@@ -72,6 +72,7 @@ mod stylesheet_set;
 mod task_manager;
 mod task_queue;
 mod task_source;
+mod euclidext;
 pub mod test;
 pub mod textinput;
 mod timers;
