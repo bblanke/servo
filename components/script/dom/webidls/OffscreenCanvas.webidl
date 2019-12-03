@@ -21,5 +21,5 @@ interface OffscreenCanvas : EventTarget {
 
   OffscreenRenderingContext? getContext(DOMString contextId, optional any options = null);
   //ImageBitmap transferToImageBitmap();
-  //Promise<Blob> convertToBlob(optional ImageEncodeOptions options);
+  Promise<Blob> convertToBlob(optional ImageEncodeOptions options = {}); // TODO: Is "={}" the best choice for a default?
 };
